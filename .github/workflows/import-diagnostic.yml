@@ -1,0 +1,28 @@
+name: Import diagnostic report
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch report
+        run: |
+          set -euo pipefail
+          curl -fsSL https://paste.rs/VNa9t -o diagnostic-report.txt
+          test -s diagnostic-report.txt
+      - name: Commit report
+        run: |
+          git config user.name 'telegram-job-agent-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add diagnostic-report.txt
+          git commit -m 'Import server diagnostic report' || exit 0
+          git push
