@@ -1,0 +1,526 @@
+--------------------------a8rHG078UMekxH5a2VjHjG
+Content-Disposition: form-data; name="file"; filename="-"
+
+=== TELEGRAM JOB AGENT SAFE BOOTSTRAP ===
+Sun Aug 30 13:19:51 UTC 2026
+telegram-job-agent
+Linux telegram-job-agent 6.8.0-138-generic #138-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 22:41:49 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+\n=== NETWORK ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             159.223.224.225/20 10.18.0.5/16 fe80::8d7:3aff:fefd:80c0/64 
+eth1             UP             10.110.0.2/20 fe80::e4c3:98ff:fe5a:7436/64 
+default via 159.223.224.1 dev eth0 proto static 
+10.18.0.0/16 dev eth0 proto kernel scope link src 10.18.0.5 
+10.110.0.0/20 dev eth1 proto kernel scope link src 10.110.0.2 
+159.223.224.0/20 dev eth0 proto kernel scope link src 159.223.224.225 
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                 
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=457,fd=17))              
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=457,fd=15))              
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=5115,fd=3),("systemd",pid=1,fd=140))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=5115,fd=4),("systemd",pid=1,fd=141))
+\n=== SYSTEMD MATCHES ===
+tg-job-agent.service                         enabled         enabled
+tg-job-discovery.service                     static          -
+tg-job-scanner.service                       static          -
+tg-job-selector.service                      static          -
+tg-job-discovery.timer         enabled  enabled
+tg-job-scanner.timer           enabled  enabled
+tg-job-selector.timer          enabled  enabled
+\n=== RUNNING PROCESSES ===
+tgjob        737  0.0  5.1  60596 50708 ?        Ss   Aug29   0:13 /opt/tg-job-agent/venv/bin/python /opt/tg-job-agent/worker.py
+\n=== CRON ===
+\n=== APP TREE ===
+/opt/tg-job-agent/.env
+/opt/tg-job-agent/__pycache__/worker.cpython-312.pyc
+/opt/tg-job-agent/auth.py
+/opt/tg-job-agent/cv/Ruslans_Strakis_CV.pdf
+/opt/tg-job-agent/discover_sources.py
+/opt/tg-job-agent/qr_auth.py
+/opt/tg-job-agent/qr_auth_refresh.py
+/opt/tg-job-agent/scanner.py
+/opt/tg-job-agent/selector.py
+/opt/tg-job-agent/telegram.session
+/opt/tg-job-agent/telegram.session-journal
+/opt/tg-job-agent/telegram_jobs.db
+/opt/tg-job-agent/venv/bin/Activate.ps1
+/opt/tg-job-agent/venv/bin/activate
+/opt/tg-job-agent/venv/bin/activate.csh
+/opt/tg-job-agent/venv/bin/activate.fish
+/opt/tg-job-agent/venv/bin/dotenv
+/opt/tg-job-agent/venv/bin/idna
+/opt/tg-job-agent/venv/bin/normalizer
+/opt/tg-job-agent/venv/bin/pip
+/opt/tg-job-agent/venv/bin/pip3
+/opt/tg-job-agent/venv/bin/pip3.12
+/opt/tg-job-agent/venv/bin/pyrsa-decrypt
+/opt/tg-job-agent/venv/bin/pyrsa-encrypt
+/opt/tg-job-agent/venv/bin/pyrsa-keygen
+/opt/tg-job-agent/venv/bin/pyrsa-priv2pub
+/opt/tg-job-agent/venv/bin/pyrsa-sign
+/opt/tg-job-agent/venv/bin/pyrsa-verify
+/opt/tg-job-agent/venv/pyvenv.cfg
+/opt/tg-job-agent/worker.py
+/opt/tg-job-agent/worker.py.airtable-backup-20260828-174259
+/opt/tg-job-agent/worker.py.backup-20260828-174109
+\n=== APP DISK USAGE ===
+35M	/opt/tg-job-agent
+\n=== SAFE BACKUP ===
+-rw-r--r-- 1 root root 9.4M Aug 30 13:19 /root/tg-agent-backup-20260830T131951Z.tgz
+\n=== ENV KEY NAMES ONLY (VALUES HIDDEN) ===
+--- /opt/tg-job-agent/.env
+TG_API_ID=<hidden>
+TG_API_HASH=<hidden>
+AIRTABLE_TOKEN=<hidden>
+AIRTABLE_BASE_ID=<hidden>
+\n=== SQLITE / DATA FILES ===
+/opt/tg-job-agent/telegram_jobs.db 2125824 bytes
+\n=== RECENT JOURNAL MATCHES ===
+--- tg-job-agent.service
+Aug 28 17:09:08 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:09:09 telegram-job-agent python[5691]: === TELEGRAM WORKER READY ===
+Aug 28 17:09:09 telegram-job-agent python[5691]: CV: Ruslans_Strakis_CV.pdf
+Aug 28 17:09:17 telegram-job-agent python[5691]: SENT @ayhandincher MESSAGE_ID 120028
+Aug 28 17:09:19 telegram-job-agent python[5691]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:09:42 telegram-job-agent python[5691]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:10:05 telegram-job-agent python[5691]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:10:27 telegram-job-agent python[5691]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:10:47 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:10:47 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:10:47 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:10:47 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 3.294s CPU time, 47.2M memory peak, 0B memory swap peak.
+Aug 28 17:10:47 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:10:48 telegram-job-agent python[5789]: === TELEGRAM WORKER READY ===
+Aug 28 17:10:48 telegram-job-agent python[5789]: CV: Ruslans_Strakis_CV.pdf
+Aug 28 17:10:50 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:11:13 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:11:35 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:11:57 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:12:20 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:12:42 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:13:05 telegram-job-agent python[5789]: ERROR recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:13:26 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:13:26 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:13:26 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:13:26 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 2.759s CPU time.
+Aug 28 17:13:26 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:13:27 telegram-job-agent python[5837]: === TELEGRAM WORKER READY ===
+Aug 28 17:13:27 telegram-job-agent python[5837]: CV: Ruslans_Strakis_CV.pdf
+Aug 28 17:13:29 telegram-job-agent python[5837]: INVALID_RECIPIENT recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:13:30 telegram-job-agent python[5837]: AIRTABLE_PATCH_ERROR recR0LHN4J9q9LO3V HTTPError('422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appof7cnfMlec2p1N/Commands/recR0LHN4J9q9LO3V')
+Aug 28 17:13:52 telegram-job-agent python[5837]: INVALID_RECIPIENT recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:13:53 telegram-job-agent python[5837]: AIRTABLE_PATCH_ERROR recR0LHN4J9q9LO3V HTTPError('422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appof7cnfMlec2p1N/Commands/recR0LHN4J9q9LO3V')
+Aug 28 17:14:15 telegram-job-agent python[5837]: INVALID_RECIPIENT recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:14:16 telegram-job-agent python[5837]: AIRTABLE_PATCH_ERROR recR0LHN4J9q9LO3V HTTPError('422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appof7cnfMlec2p1N/Commands/recR0LHN4J9q9LO3V')
+Aug 28 17:14:38 telegram-job-agent python[5837]: INVALID_RECIPIENT recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:14:39 telegram-job-agent python[5837]: AIRTABLE_PATCH_ERROR recR0LHN4J9q9LO3V HTTPError('422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appof7cnfMlec2p1N/Commands/recR0LHN4J9q9LO3V')
+Aug 28 17:14:46 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:14:46 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:14:46 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:14:46 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 1.815s CPU time.
+Aug 28 17:14:46 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:14:47 telegram-job-agent python[5873]: === TELEGRAM WORKER READY ===
+Aug 28 17:14:47 telegram-job-agent python[5873]: CV: Ruslans_Strakis_CV.pdf
+Aug 28 17:14:49 telegram-job-agent python[5873]: INVALID_RECIPIENT recR0LHN4J9q9LO3V ValueError('No user has "nickangy" as username')
+Aug 28 17:19:21 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:19:21 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:19:21 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:19:21 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 1.729s CPU time.
+Aug 28 17:19:21 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:19:21 telegram-job-agent python[5948]: === TELEGRAM WORKER READY ===
+Aug 28 17:19:21 telegram-job-agent python[5948]: CV: Ruslans_Strakis_CV.pdf
+Aug 28 17:42:59 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:42:59 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:42:59 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:42:59 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 4.973s CPU time, 44.4M memory peak, 0B memory swap peak.
+Aug 28 17:42:59 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:44:08 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 28 17:44:08 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 28 17:44:08 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 28 17:44:08 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 29 10:16:54 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 29 10:16:54 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 29 10:16:54 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 29 10:16:54 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 11.663s CPU time, 41.2M memory peak, 0B memory swap peak.
+-- Boot f0ad4b9372b147edbcf438aa56cb2d9b --
+Aug 29 10:17:35 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 29 10:34:33 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 29 10:34:33 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 29 10:34:33 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+Aug 29 10:34:33 telegram-job-agent systemd[1]: tg-job-agent.service: Consumed 1.493s CPU time.
+-- Boot 72ea0b92cd014e84a43fafb438267f4f --
+Aug 29 10:35:18 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+Aug 29 10:48:00 telegram-job-agent systemd[1]: Stopping tg-job-agent.service - Telegram Job Agent...
+Aug 29 10:48:00 telegram-job-agent systemd[1]: tg-job-agent.service: Deactivated successfully.
+Aug 29 10:48:00 telegram-job-agent systemd[1]: Stopped tg-job-agent.service - Telegram Job Agent.
+-- Boot 6cfd898278144b7f8ef0dc36d19bc62e --
+Aug 29 10:48:20 telegram-job-agent systemd[1]: Started tg-job-agent.service - Telegram Job Agent.
+--- tg-job-discovery.service
+Aug 29 10:59:11 telegram-job-agent python[1376]: examined: 138
+Aug 29 10:59:11 telegram-job-agent python[1376]: added: 0
+Aug 29 10:59:11 telegram-job-agent python[1376]: updated: 0
+Aug 29 10:59:11 telegram-job-agent python[1376]: sources_total: 523
+Aug 29 10:59:11 telegram-job-agent python[1376]: integrity: ok
+Aug 29 10:59:11 telegram-job-agent python[1376]: === SOURCE DISCOVERY DONE ===
+Aug 29 10:59:11 telegram-job-agent systemd[1]: tg-job-discovery.service: Deactivated successfully.
+Aug 29 10:59:11 telegram-job-agent systemd[1]: Finished tg-job-discovery.service - Telegram Job Source Discovery.
+Aug 29 16:58:10 telegram-job-agent systemd[1]: Starting tg-job-discovery.service - Telegram Job Source Discovery...
+Aug 29 16:58:15 telegram-job-agent python[10868]: Traceback (most recent call last):
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/discover_sources.py", line 242, in <module>
+Aug 29 16:58:15 telegram-job-agent python[10868]:     asyncio.run(main())
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 29 16:58:15 telegram-job-agent python[10868]:     return runner.run(main)
+Aug 29 16:58:15 telegram-job-agent python[10868]:            ^^^^^^^^^^^^^^^^
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 29 16:58:15 telegram-job-agent python[10868]:     return self._loop.run_until_complete(task)
+Aug 29 16:58:15 telegram-job-agent python[10868]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 29 16:58:15 telegram-job-agent python[10868]:     return future.result()
+Aug 29 16:58:15 telegram-job-agent python[10868]:            ^^^^^^^^^^^^^^^
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/discover_sources.py", line 121, in main
+Aug 29 16:58:15 telegram-job-agent python[10868]:     await client.start()
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 29 16:58:15 telegram-job-agent python[10868]:     await self.connect()
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 29 16:58:15 telegram-job-agent python[10868]:     self.session.auth_key = self._sender.auth_key
+Aug 29 16:58:15 telegram-job-agent python[10868]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 29 16:58:15 telegram-job-agent python[10868]:     self._update_session_table()
+Aug 29 16:58:15 telegram-job-agent python[10868]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 29 16:58:15 telegram-job-agent python[10868]:     c.execute('delete from sessions')
+Aug 29 16:58:15 telegram-job-agent python[10868]: sqlite3.OperationalError: database is locked
+Aug 29 16:58:15 telegram-job-agent systemd[1]: tg-job-discovery.service: Main process exited, code=exited, status=1/FAILURE
+Aug 29 16:58:15 telegram-job-agent systemd[1]: tg-job-discovery.service: Failed with result 'exit-code'.
+Aug 29 16:58:15 telegram-job-agent systemd[1]: Failed to start tg-job-discovery.service - Telegram Job Source Discovery.
+Aug 29 22:58:13 telegram-job-agent systemd[1]: Starting tg-job-discovery.service - Telegram Job Source Discovery...
+Aug 29 22:58:18 telegram-job-agent python[13825]: Traceback (most recent call last):
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/discover_sources.py", line 242, in <module>
+Aug 29 22:58:18 telegram-job-agent python[13825]:     asyncio.run(main())
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 29 22:58:18 telegram-job-agent python[13825]:     return runner.run(main)
+Aug 29 22:58:18 telegram-job-agent python[13825]:            ^^^^^^^^^^^^^^^^
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 29 22:58:18 telegram-job-agent python[13825]:     return self._loop.run_until_complete(task)
+Aug 29 22:58:18 telegram-job-agent python[13825]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 29 22:58:18 telegram-job-agent python[13825]:     return future.result()
+Aug 29 22:58:18 telegram-job-agent python[13825]:            ^^^^^^^^^^^^^^^
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/discover_sources.py", line 121, in main
+Aug 29 22:58:18 telegram-job-agent python[13825]:     await client.start()
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 29 22:58:18 telegram-job-agent python[13825]:     await self.connect()
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 29 22:58:18 telegram-job-agent python[13825]:     self.session.auth_key = self._sender.auth_key
+Aug 29 22:58:18 telegram-job-agent python[13825]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 29 22:58:18 telegram-job-agent python[13825]:     self._update_session_table()
+Aug 29 22:58:18 telegram-job-agent python[13825]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 29 22:58:18 telegram-job-agent python[13825]:     c.execute('delete from sessions')
+Aug 29 22:58:18 telegram-job-agent python[13825]: sqlite3.OperationalError: database is locked
+Aug 29 22:58:18 telegram-job-agent systemd[1]: tg-job-discovery.service: Main process exited, code=exited, status=1/FAILURE
+Aug 29 22:58:18 telegram-job-agent systemd[1]: tg-job-discovery.service: Failed with result 'exit-code'.
+Aug 29 22:58:18 telegram-job-agent systemd[1]: Failed to start tg-job-discovery.service - Telegram Job Source Discovery.
+Aug 30 04:58:58 telegram-job-agent systemd[1]: Starting tg-job-discovery.service - Telegram Job Source Discovery...
+Aug 30 04:59:03 telegram-job-agent python[15620]: Traceback (most recent call last):
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/discover_sources.py", line 242, in <module>
+Aug 30 04:59:03 telegram-job-agent python[15620]:     asyncio.run(main())
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 04:59:03 telegram-job-agent python[15620]:     return runner.run(main)
+Aug 30 04:59:03 telegram-job-agent python[15620]:            ^^^^^^^^^^^^^^^^
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 04:59:03 telegram-job-agent python[15620]:     return self._loop.run_until_complete(task)
+Aug 30 04:59:03 telegram-job-agent python[15620]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 04:59:03 telegram-job-agent python[15620]:     return future.result()
+Aug 30 04:59:03 telegram-job-agent python[15620]:            ^^^^^^^^^^^^^^^
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/discover_sources.py", line 121, in main
+Aug 30 04:59:03 telegram-job-agent python[15620]:     await client.start()
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 04:59:03 telegram-job-agent python[15620]:     await self.connect()
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 04:59:03 telegram-job-agent python[15620]:     self.session.auth_key = self._sender.auth_key
+Aug 30 04:59:03 telegram-job-agent python[15620]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 04:59:03 telegram-job-agent python[15620]:     self._update_session_table()
+Aug 30 04:59:03 telegram-job-agent python[15620]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 04:59:03 telegram-job-agent python[15620]:     c.execute('delete from sessions')
+Aug 30 04:59:03 telegram-job-agent python[15620]: sqlite3.OperationalError: database is locked
+Aug 30 04:59:03 telegram-job-agent systemd[1]: tg-job-discovery.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 04:59:03 telegram-job-agent systemd[1]: tg-job-discovery.service: Failed with result 'exit-code'.
+Aug 30 04:59:03 telegram-job-agent systemd[1]: Failed to start tg-job-discovery.service - Telegram Job Source Discovery.
+Aug 30 10:59:00 telegram-job-agent systemd[1]: Starting tg-job-discovery.service - Telegram Job Source Discovery...
+Aug 30 10:59:06 telegram-job-agent python[23414]: Traceback (most recent call last):
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/discover_sources.py", line 242, in <module>
+Aug 30 10:59:06 telegram-job-agent python[23414]:     asyncio.run(main())
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 10:59:06 telegram-job-agent python[23414]:     return runner.run(main)
+Aug 30 10:59:06 telegram-job-agent python[23414]:            ^^^^^^^^^^^^^^^^
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 10:59:06 telegram-job-agent python[23414]:     return self._loop.run_until_complete(task)
+Aug 30 10:59:06 telegram-job-agent python[23414]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 10:59:06 telegram-job-agent python[23414]:     return future.result()
+Aug 30 10:59:06 telegram-job-agent python[23414]:            ^^^^^^^^^^^^^^^
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/discover_sources.py", line 121, in main
+Aug 30 10:59:06 telegram-job-agent python[23414]:     await client.start()
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 10:59:06 telegram-job-agent python[23414]:     await self.connect()
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 10:59:06 telegram-job-agent python[23414]:     self.session.auth_key = self._sender.auth_key
+Aug 30 10:59:06 telegram-job-agent python[23414]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 10:59:06 telegram-job-agent python[23414]:     self._update_session_table()
+Aug 30 10:59:06 telegram-job-agent python[23414]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 10:59:06 telegram-job-agent python[23414]:     c.execute('delete from sessions')
+Aug 30 10:59:06 telegram-job-agent python[23414]: sqlite3.OperationalError: database is locked
+Aug 30 10:59:06 telegram-job-agent systemd[1]: tg-job-discovery.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 10:59:06 telegram-job-agent systemd[1]: tg-job-discovery.service: Failed with result 'exit-code'.
+Aug 30 10:59:06 telegram-job-agent systemd[1]: Failed to start tg-job-discovery.service - Telegram Job Source Discovery.
+--- tg-job-scanner.service
+Aug 30 08:53:48 telegram-job-agent python[19951]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 08:53:48 telegram-job-agent python[19951]:     self._update_session_table()
+Aug 30 08:53:48 telegram-job-agent python[19951]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 08:53:48 telegram-job-agent python[19951]:     c.execute('delete from sessions')
+Aug 30 08:53:48 telegram-job-agent python[19951]: sqlite3.OperationalError: database is locked
+Aug 30 08:53:49 telegram-job-agent systemd[1]: tg-job-scanner.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 08:53:49 telegram-job-agent systemd[1]: tg-job-scanner.service: Failed with result 'exit-code'.
+Aug 30 08:53:49 telegram-job-agent systemd[1]: Failed to start tg-job-scanner.service - Telegram Job Scanner.
+Aug 30 09:53:45 telegram-job-agent systemd[1]: Starting tg-job-scanner.service - Telegram Job Scanner...
+Aug 30 09:53:51 telegram-job-agent python[21417]: Traceback (most recent call last):
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/scanner.py", line 206, in <module>
+Aug 30 09:53:51 telegram-job-agent python[21417]:     asyncio.run(main())
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 09:53:51 telegram-job-agent python[21417]:     return runner.run(main)
+Aug 30 09:53:51 telegram-job-agent python[21417]:            ^^^^^^^^^^^^^^^^
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 09:53:51 telegram-job-agent python[21417]:     return self._loop.run_until_complete(task)
+Aug 30 09:53:51 telegram-job-agent python[21417]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 09:53:51 telegram-job-agent python[21417]:     return future.result()
+Aug 30 09:53:51 telegram-job-agent python[21417]:            ^^^^^^^^^^^^^^^
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/scanner.py", line 175, in main
+Aug 30 09:53:51 telegram-job-agent python[21417]:     await client.start()
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 09:53:51 telegram-job-agent python[21417]:     await self.connect()
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 09:53:51 telegram-job-agent python[21417]:     self.session.auth_key = self._sender.auth_key
+Aug 30 09:53:51 telegram-job-agent python[21417]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 09:53:51 telegram-job-agent python[21417]:     self._update_session_table()
+Aug 30 09:53:51 telegram-job-agent python[21417]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 09:53:51 telegram-job-agent python[21417]:     c.execute('delete from sessions')
+Aug 30 09:53:51 telegram-job-agent python[21417]: sqlite3.OperationalError: database is locked
+Aug 30 09:53:51 telegram-job-agent systemd[1]: tg-job-scanner.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 09:53:51 telegram-job-agent systemd[1]: tg-job-scanner.service: Failed with result 'exit-code'.
+Aug 30 09:53:51 telegram-job-agent systemd[1]: Failed to start tg-job-scanner.service - Telegram Job Scanner.
+Aug 30 10:53:47 telegram-job-agent systemd[1]: Starting tg-job-scanner.service - Telegram Job Scanner...
+Aug 30 10:53:52 telegram-job-agent python[23271]: Traceback (most recent call last):
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/scanner.py", line 206, in <module>
+Aug 30 10:53:52 telegram-job-agent python[23271]:     asyncio.run(main())
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 10:53:52 telegram-job-agent python[23271]:     return runner.run(main)
+Aug 30 10:53:52 telegram-job-agent python[23271]:            ^^^^^^^^^^^^^^^^
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 10:53:52 telegram-job-agent python[23271]:     return self._loop.run_until_complete(task)
+Aug 30 10:53:52 telegram-job-agent python[23271]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 10:53:52 telegram-job-agent python[23271]:     return future.result()
+Aug 30 10:53:52 telegram-job-agent python[23271]:            ^^^^^^^^^^^^^^^
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/scanner.py", line 175, in main
+Aug 30 10:53:52 telegram-job-agent python[23271]:     await client.start()
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 10:53:52 telegram-job-agent python[23271]:     await self.connect()
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 10:53:52 telegram-job-agent python[23271]:     self.session.auth_key = self._sender.auth_key
+Aug 30 10:53:52 telegram-job-agent python[23271]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 10:53:52 telegram-job-agent python[23271]:     self._update_session_table()
+Aug 30 10:53:52 telegram-job-agent python[23271]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 10:53:52 telegram-job-agent python[23271]:     c.execute('delete from sessions')
+Aug 30 10:53:52 telegram-job-agent python[23271]: sqlite3.OperationalError: database is locked
+Aug 30 10:53:53 telegram-job-agent systemd[1]: tg-job-scanner.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 10:53:53 telegram-job-agent systemd[1]: tg-job-scanner.service: Failed with result 'exit-code'.
+Aug 30 10:53:53 telegram-job-agent systemd[1]: Failed to start tg-job-scanner.service - Telegram Job Scanner.
+Aug 30 11:53:48 telegram-job-agent systemd[1]: Starting tg-job-scanner.service - Telegram Job Scanner...
+Aug 30 11:53:53 telegram-job-agent python[25208]: Traceback (most recent call last):
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/scanner.py", line 206, in <module>
+Aug 30 11:53:53 telegram-job-agent python[25208]:     asyncio.run(main())
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 11:53:53 telegram-job-agent python[25208]:     return runner.run(main)
+Aug 30 11:53:53 telegram-job-agent python[25208]:            ^^^^^^^^^^^^^^^^
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 11:53:53 telegram-job-agent python[25208]:     return self._loop.run_until_complete(task)
+Aug 30 11:53:53 telegram-job-agent python[25208]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 11:53:53 telegram-job-agent python[25208]:     return future.result()
+Aug 30 11:53:53 telegram-job-agent python[25208]:            ^^^^^^^^^^^^^^^
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/scanner.py", line 175, in main
+Aug 30 11:53:53 telegram-job-agent python[25208]:     await client.start()
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 11:53:53 telegram-job-agent python[25208]:     await self.connect()
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 11:53:53 telegram-job-agent python[25208]:     self.session.auth_key = self._sender.auth_key
+Aug 30 11:53:53 telegram-job-agent python[25208]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 11:53:53 telegram-job-agent python[25208]:     self._update_session_table()
+Aug 30 11:53:53 telegram-job-agent python[25208]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 11:53:53 telegram-job-agent python[25208]:     c.execute('delete from sessions')
+Aug 30 11:53:53 telegram-job-agent python[25208]: sqlite3.OperationalError: database is locked
+Aug 30 11:53:53 telegram-job-agent systemd[1]: tg-job-scanner.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 11:53:53 telegram-job-agent systemd[1]: tg-job-scanner.service: Failed with result 'exit-code'.
+Aug 30 11:53:53 telegram-job-agent systemd[1]: Failed to start tg-job-scanner.service - Telegram Job Scanner.
+Aug 30 12:53:52 telegram-job-agent systemd[1]: Starting tg-job-scanner.service - Telegram Job Scanner...
+Aug 30 12:53:58 telegram-job-agent python[27024]: Traceback (most recent call last):
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/scanner.py", line 206, in <module>
+Aug 30 12:53:58 telegram-job-agent python[27024]:     asyncio.run(main())
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+Aug 30 12:53:58 telegram-job-agent python[27024]:     return runner.run(main)
+Aug 30 12:53:58 telegram-job-agent python[27024]:            ^^^^^^^^^^^^^^^^
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+Aug 30 12:53:58 telegram-job-agent python[27024]:     return self._loop.run_until_complete(task)
+Aug 30 12:53:58 telegram-job-agent python[27024]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+Aug 30 12:53:58 telegram-job-agent python[27024]:     return future.result()
+Aug 30 12:53:58 telegram-job-agent python[27024]:            ^^^^^^^^^^^^^^^
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/scanner.py", line 175, in main
+Aug 30 12:53:58 telegram-job-agent python[27024]:     await client.start()
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/auth.py", line 135, in _start
+Aug 30 12:53:58 telegram-job-agent python[27024]:     await self.connect()
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/client/telegrambaseclient.py", line 571, in connect
+Aug 30 12:53:58 telegram-job-agent python[27024]:     self.session.auth_key = self._sender.auth_key
+Aug 30 12:53:58 telegram-job-agent python[27024]:     ^^^^^^^^^^^^^^^^^^^^^
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 191, in auth_key
+Aug 30 12:53:58 telegram-job-agent python[27024]:     self._update_session_table()
+Aug 30 12:53:58 telegram-job-agent python[27024]:   File "/opt/tg-job-agent/venv/lib/python3.12/site-packages/telethon/sessions/sqlite.py", line 210, in _update_session_table
+Aug 30 12:53:58 telegram-job-agent python[27024]:     c.execute('delete from sessions')
+Aug 30 12:53:58 telegram-job-agent python[27024]: sqlite3.OperationalError: database is locked
+Aug 30 12:53:58 telegram-job-agent systemd[1]: tg-job-scanner.service: Main process exited, code=exited, status=1/FAILURE
+Aug 30 12:53:58 telegram-job-agent systemd[1]: tg-job-scanner.service: Failed with result 'exit-code'.
+Aug 30 12:53:58 telegram-job-agent systemd[1]: Failed to start tg-job-scanner.service - Telegram Job Scanner.
+--- tg-job-selector.service
+Aug 30 01:55:21 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 01:55:21 telegram-job-agent python[14533]: checked: 12
+Aug 30 01:55:21 telegram-job-agent python[14533]: queued: 0
+Aug 30 01:55:21 telegram-job-agent python[14533]: held_time: 12
+Aug 30 01:55:21 telegram-job-agent python[14533]: rejected: 0
+Aug 30 01:55:21 telegram-job-agent python[14533]: blocked_contact: 0
+Aug 30 01:55:21 telegram-job-agent python[14533]: pending_queue: 0
+Aug 30 01:55:21 telegram-job-agent python[14533]: integrity: ok
+Aug 30 01:55:21 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 01:55:21 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 02:56:03 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 02:56:03 telegram-job-agent python[14735]: checked: 12
+Aug 30 02:56:03 telegram-job-agent python[14735]: queued: 0
+Aug 30 02:56:03 telegram-job-agent python[14735]: held_time: 12
+Aug 30 02:56:03 telegram-job-agent python[14735]: rejected: 0
+Aug 30 02:56:03 telegram-job-agent python[14735]: blocked_contact: 0
+Aug 30 02:56:03 telegram-job-agent python[14735]: pending_queue: 0
+Aug 30 02:56:03 telegram-job-agent python[14735]: integrity: ok
+Aug 30 02:56:03 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 02:56:03 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 03:56:03 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 03:56:03 telegram-job-agent python[15412]: checked: 12
+Aug 30 03:56:03 telegram-job-agent python[15412]: queued: 0
+Aug 30 03:56:03 telegram-job-agent python[15412]: held_time: 12
+Aug 30 03:56:03 telegram-job-agent python[15412]: rejected: 0
+Aug 30 03:56:03 telegram-job-agent python[15412]: blocked_contact: 0
+Aug 30 03:56:03 telegram-job-agent python[15412]: pending_queue: 0
+Aug 30 03:56:03 telegram-job-agent python[15412]: integrity: ok
+Aug 30 03:56:03 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 03:56:03 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 04:56:13 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 04:56:13 telegram-job-agent python[15614]: checked: 12
+Aug 30 04:56:13 telegram-job-agent python[15614]: queued: 0
+Aug 30 04:56:13 telegram-job-agent python[15614]: held_time: 12
+Aug 30 04:56:13 telegram-job-agent python[15614]: rejected: 0
+Aug 30 04:56:13 telegram-job-agent python[15614]: blocked_contact: 0
+Aug 30 04:56:13 telegram-job-agent python[15614]: pending_queue: 0
+Aug 30 04:56:13 telegram-job-agent python[15614]: integrity: ok
+Aug 30 04:56:13 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 04:56:13 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 05:56:13 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 05:56:13 telegram-job-agent python[16197]: checked: 12
+Aug 30 05:56:13 telegram-job-agent python[16197]: queued: 0
+Aug 30 05:56:13 telegram-job-agent python[16197]: held_time: 12
+Aug 30 05:56:13 telegram-job-agent python[16197]: rejected: 0
+Aug 30 05:56:13 telegram-job-agent python[16197]: blocked_contact: 0
+Aug 30 05:56:13 telegram-job-agent python[16197]: pending_queue: 0
+Aug 30 05:56:13 telegram-job-agent python[16197]: integrity: ok
+Aug 30 05:56:13 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 05:56:13 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 06:56:19 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 06:56:19 telegram-job-agent python[18074]: checked: 12
+Aug 30 06:56:19 telegram-job-agent python[18074]: queued: 0
+Aug 30 06:56:19 telegram-job-agent python[18074]: held_time: 12
+Aug 30 06:56:19 telegram-job-agent python[18074]: rejected: 0
+Aug 30 06:56:19 telegram-job-agent python[18074]: blocked_contact: 0
+Aug 30 06:56:19 telegram-job-agent python[18074]: pending_queue: 0
+Aug 30 06:56:19 telegram-job-agent python[18074]: integrity: ok
+Aug 30 06:56:19 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 06:56:19 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 07:56:21 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 07:56:22 telegram-job-agent python[18632]: checked: 12
+Aug 30 07:56:22 telegram-job-agent python[18632]: queued: 0
+Aug 30 07:56:22 telegram-job-agent python[18632]: held_time: 12
+Aug 30 07:56:22 telegram-job-agent python[18632]: rejected: 0
+Aug 30 07:56:22 telegram-job-agent python[18632]: blocked_contact: 0
+Aug 30 07:56:22 telegram-job-agent python[18632]: pending_queue: 0
+Aug 30 07:56:22 telegram-job-agent python[18632]: integrity: ok
+Aug 30 07:56:22 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 07:56:22 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 08:56:24 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 08:56:25 telegram-job-agent python[20011]: checked: 12
+Aug 30 08:56:25 telegram-job-agent python[20011]: queued: 0
+Aug 30 08:56:25 telegram-job-agent python[20011]: held_time: 12
+Aug 30 08:56:25 telegram-job-agent python[20011]: rejected: 0
+Aug 30 08:56:25 telegram-job-agent python[20011]: blocked_contact: 0
+Aug 30 08:56:25 telegram-job-agent python[20011]: pending_queue: 0
+Aug 30 08:56:25 telegram-job-agent python[20011]: integrity: ok
+Aug 30 08:56:25 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 08:56:25 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 09:56:26 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 09:56:26 telegram-job-agent python[21504]: checked: 12
+Aug 30 09:56:26 telegram-job-agent python[21504]: queued: 0
+Aug 30 09:56:26 telegram-job-agent python[21504]: held_time: 12
+Aug 30 09:56:26 telegram-job-agent python[21504]: rejected: 0
+Aug 30 09:56:26 telegram-job-agent python[21504]: blocked_contact: 0
+Aug 30 09:56:26 telegram-job-agent python[21504]: pending_queue: 0
+Aug 30 09:56:26 telegram-job-agent python[21504]: integrity: ok
+Aug 30 09:56:26 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 09:56:26 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 10:56:27 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 10:56:27 telegram-job-agent python[23349]: checked: 12
+Aug 30 10:56:27 telegram-job-agent python[23349]: queued: 0
+Aug 30 10:56:27 telegram-job-agent python[23349]: held_time: 12
+Aug 30 10:56:27 telegram-job-agent python[23349]: rejected: 0
+Aug 30 10:56:27 telegram-job-agent python[23349]: blocked_contact: 0
+Aug 30 10:56:27 telegram-job-agent python[23349]: pending_queue: 0
+Aug 30 10:56:27 telegram-job-agent python[23349]: integrity: ok
+Aug 30 10:56:27 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 10:56:27 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 11:56:29 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 11:56:29 telegram-job-agent python[25276]: checked: 12
+Aug 30 11:56:29 telegram-job-agent python[25276]: queued: 0
+Aug 30 11:56:29 telegram-job-agent python[25276]: held_time: 12
+Aug 30 11:56:29 telegram-job-agent python[25276]: rejected: 0
+Aug 30 11:56:29 telegram-job-agent python[25276]: blocked_contact: 0
+Aug 30 11:56:29 telegram-job-agent python[25276]: pending_queue: 0
+Aug 30 11:56:29 telegram-job-agent python[25276]: integrity: ok
+Aug 30 11:56:29 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 11:56:29 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+Aug 30 12:56:29 telegram-job-agent systemd[1]: Starting tg-job-selector.service - Telegram Job Selector...
+Aug 30 12:56:29 telegram-job-agent python[27088]: checked: 12
+Aug 30 12:56:29 telegram-job-agent python[27088]: queued: 0
+Aug 30 12:56:29 telegram-job-agent python[27088]: held_time: 12
+Aug 30 12:56:29 telegram-job-agent python[27088]: rejected: 0
+Aug 30 12:56:29 telegram-job-agent python[27088]: blocked_contact: 0
+Aug 30 12:56:29 telegram-job-agent python[27088]: pending_queue: 0
+Aug 30 12:56:29 telegram-job-agent python[27088]: integrity: ok
+Aug 30 12:56:29 telegram-job-agent systemd[1]: tg-job-selector.service: Deactivated successfully.
+Aug 30 12:56:29 telegram-job-agent systemd[1]: Finished tg-job-selector.service - Telegram Job Selector.
+\n=== SAFETY HOLD ===
+No Telegram sends were enabled or triggered by this script.
+Report: /root/tg-agent-report-20260830T131951Z.txt
+Backup: /root/tg-agent-backup-20260830T131951Z.tgz
+=== END ===
+
+--------------------------a8rHG078UMekxH5a2VjHjG--
