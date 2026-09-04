@@ -57,6 +57,21 @@ COUNTRY_TZ = {
     "cambodia": "Asia/Phnom_Penh"
 }
 
+PRIORITY_COUNTRIES = {
+    "indonesia","thailand","vietnam","malaysia","philippines","singapore","cambodia",
+    "laos","myanmar","brunei","timor-leste","east timor",
+    "china","japan","south korea","korea",
+    "mexico","colombia","brazil","argentina","chile","peru","ecuador","uruguay",
+    "paraguay","bolivia","costa rica","panama","guatemala","dominican republic",
+    "spain","portugal"
+}
+EUROPE_COUNTRIES = {
+    "netherlands","germany","belgium","france","ireland","uk","united kingdom",
+    "italy","malta","cyprus","greece","austria","switzerland","poland","czechia",
+    "czech republic","slovakia","slovenia","croatia","hungary","romania","bulgaria",
+    "denmark","sweden","norway","finland","estonia","latvia","lithuania","luxembourg"
+}
+
 GOOD = [
     "general manager","operations manager","operation manager",
     "project manager","program manager","property manager",
@@ -168,6 +183,14 @@ def infer_country(row):
 
     return None
 
+def region_priority(row):
+    country = (infer_country(row) or '').strip().lower()
+    if country in PRIORITY_COUNTRIES:
+        return 0
+    if country in EUROPE_COUNTRIES:
+        return 2
+    return 1
+
 def allowed_now(country, source_timezone=None):
     tzname = (source_timezone or '').strip()
     if not tzname and country:
@@ -275,8 +298,12 @@ WHERE j.status='new'
   AND j.contact!=''
   AND COALESCE(j.selector_status,'') IN ('','held_time')
 ORDER BY j.id ASC
-LIMIT 250
+LIMIT 1000
 """).fetchall()
+
+# Founder priority: SEA + China/Japan/Korea + LATAM + Spain/Portugal first;
+# other non-European jobs next; the rest of Europe last.
+rows = sorted(rows, key=lambda r: (region_priority(r), r['id']))[:250]
 
 queued = 0
 held_time = 0
