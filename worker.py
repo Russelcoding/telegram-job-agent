@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import asyncio
+import random
 from pathlib import Path
 from datetime import datetime, timezone
 from telethon import TelegramClient
@@ -10,6 +11,9 @@ ROOT = Path('/opt/tg-job-agent')
 DB = ROOT / 'telegram_jobs.db'
 ENV = ROOT / '.env'
 DEFAULT_CV = ROOT / 'cv' / 'Ruslans_Strakis_CV.pdf'
+MIN_SEND_DELAY_SECONDS = 120
+MAX_SEND_DELAY_SECONDS = 300
+EMPTY_QUEUE_POLL_SECONDS = 20
 
 def load_env():
     for line in ENV.read_text().splitlines():
@@ -89,31 +93,32 @@ async def process_one(row):
         if already_contacted(con, recipient):
             print('SKIP CONTACTED', recipient)
             mark_skipped(con, row['id'], 'contact_already_contacted')
-            return
+            return False
         if not Path(cv_path).exists():
             mark_failed(con, row['id'], f'CV missing: {cv_path}')
             print('CV MISSING', cv_path)
-            return
+            return False
         # Level 3 mandatory outbound safety gate. Fail closed immediately before Telegram.
         verified, safety_reason = outbound_employer_verified(con, row)
         if not verified:
             mark_skipped(con, row['id'], 'outbound_safety:' + safety_reason)
             print('SKIP_UNVERIFIED_EMPLOYER', recipient, safety_reason)
-            return
+            return False
         try:
             entity = await client.get_entity(recipient)
         except Exception as e:
             mark_failed(con, row['id'], f'Invalid/unresolvable recipient: {e}')
             print('INVALID_RECIPIENT', recipient, repr(e))
-            return
+            return False
         try:
             msg = await client.send_message(entity, message, file=cv_path)
         except RPCError as e:
             mark_failed(con, row['id'], e)
             print('SEND FAILED', recipient, repr(e))
-            return
+            return False
         mark_sent(con, row['id'], recipient, message, cv_path, msg.id, row['job_id'])
         print('SENT', recipient, 'MESSAGE_ID', msg.id)
+        return True
     finally:
         con.close()
 
@@ -126,12 +131,21 @@ async def main():
     print('=== SQLITE TELEGRAM WORKER READY ===')
     print('DB:', DB)
     print('CV:', DEFAULT_CV.name)
+    print(f'OUTBOUND PACING: one send every {MIN_SEND_DELAY_SECONDS}-{MAX_SEND_DELAY_SECONDS}s')
     while True:
         con = db()
-        rows = con.execute("\n            SELECT *\n            FROM send_queue\n            WHERE status='pending'\n            ORDER BY id ASC\n            LIMIT 10\n            ").fetchall()
+        row = con.execute("\n            SELECT *\n            FROM send_queue\n            WHERE status='pending'\n            ORDER BY id ASC\n            LIMIT 1\n            ").fetchone()
         con.close()
-        for row in rows:
-            await process_one(row)
-        await asyncio.sleep(20)
+        if not row:
+            await asyncio.sleep(EMPTY_QUEUE_POLL_SECONDS)
+            continue
+        sent = await process_one(row)
+        if sent:
+            delay = random.randint(MIN_SEND_DELAY_SECONDS, MAX_SEND_DELAY_SECONDS)
+            print('NEXT_SEND_DELAY_SECONDS', delay)
+            await asyncio.sleep(delay)
+        else:
+            # Invalid/skipped items should not create multi-minute stalls.
+            await asyncio.sleep(5)
 if __name__ == '__main__':
     asyncio.run(main())
