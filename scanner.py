@@ -50,6 +50,29 @@ ROLE_WORDS = ['general manager', 'operations manager', 'operation manager', 'pro
 BAD_WORDS = ['internship', 'intern ', 'unpaid', 'volunteer', 'стажировка', 'без оплаты']
 CONTACT_RE = re.compile('(?<![\\w])@([A-Za-z0-9_]{5,32})')
 
+PRIORITY_COUNTRIES = {
+    'indonesia','thailand','vietnam','malaysia','philippines','singapore','cambodia',
+    'laos','myanmar','brunei','timor-leste','east timor',
+    'china','japan','south korea','korea',
+    'mexico','colombia','brazil','argentina','chile','peru','ecuador','uruguay',
+    'paraguay','bolivia','costa rica','panama','guatemala','dominican republic',
+    'spain','portugal'
+}
+EUROPE_COUNTRIES = {
+    'netherlands','germany','belgium','france','ireland','uk','united kingdom',
+    'italy','malta','cyprus','greece','austria','switzerland','poland','czechia',
+    'czech republic','slovakia','slovenia','croatia','hungary','romania','bulgaria',
+    'denmark','sweden','norway','finland','estonia','latvia','lithuania','luxembourg'
+}
+
+def source_priority(country):
+    c = (country or '').strip().lower()
+    if c in PRIORITY_COUNTRIES:
+        return 0
+    if c in EUROPE_COUNTRIES:
+        return 2
+    return 1
+
 def db():
     c = sqlite3.connect(DB, timeout=30)
     c.row_factory = sqlite3.Row
@@ -137,8 +160,18 @@ async def scan_source(source):
 async def main():
     await client.start()
     con = db()
-    sources = con.execute('\n        SELECT *\n        FROM sources\n        WHERE active=1\n          AND (\n            username IS NOT NULL\n            OR telegram_url IS NOT NULL\n          )\n        ORDER BY\n          CASE WHEN last_scanned_at IS NULL THEN 0 ELSE 1 END,\n          last_scanned_at ASC\n        LIMIT 120\n    ').fetchall()
+    sources = con.execute('\n        SELECT *\n        FROM sources\n        WHERE active=1\n          AND (\n            username IS NOT NULL\n            OR telegram_url IS NOT NULL\n          )\n    ').fetchall()
     con.close()
+    # Founder priority: SEA + China/Japan/Korea + LATAM + Spain/Portugal first;
+    # other non-European sources next; the rest of Europe last.
+    sources = sorted(
+        sources,
+        key=lambda s: (
+            source_priority(s['country']),
+            0 if s['last_scanned_at'] is None else 1,
+            s['last_scanned_at'] or ''
+        )
+    )[:120]
     total = 0
     print('=== TELEGRAM SCANNER START ===')
     print('sources:', len(sources))
