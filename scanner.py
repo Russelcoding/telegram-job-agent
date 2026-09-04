@@ -6,7 +6,9 @@ import hashlib
 import asyncio
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
-from telethon import TelegramClient
+from telethon import TelegramClient, utils
+from telethon.tl import types
+from telethon.errors import FloodWaitError
 from candidate_classifier import classify_post
 
 # --- persistent resolve guard injected by repair ---
@@ -34,6 +36,13 @@ def _rg_ok(key):
 ROOT = Path('/opt/tg-job-agent')
 DB = ROOT / 'telegram_jobs.db'
 ENV = ROOT / '.env'
+SESSION_CACHES = [
+    ROOT / 'telegram_scanner.session',
+    ROOT / 'telegram_discovery.session',
+    ROOT / 'telegram_worker.session',
+    ROOT / 'telegram.session',
+    ROOT / 'telegram_poster.session',
+]
 
 def load_env():
     for line in ENV.read_text().splitlines():
@@ -88,7 +97,39 @@ def normalize_username(v):
     v = v.strip()
     v = v.replace('https://t.me/', '').replace('http://t.me/', '')
     v = v.lstrip('@').split('?')[0].split('/')[0]
+    if v.lower() in {'joinchat'} or v.startswith('+'):
+        return None
     return v or None
+
+def cached_input_peer(username):
+    """Return an InputPeer using only local Telethon caches; never resolve a username over Telegram."""
+    if not username:
+        return None
+    uname = username.lower()
+    for path in SESSION_CACHES:
+        if not path.exists():
+            continue
+        try:
+            con = sqlite3.connect(path, timeout=2)
+            row = con.execute(
+                "SELECT id, hash FROM entities WHERE lower(COALESCE(username,''))=? LIMIT 1",
+                (uname,)
+            ).fetchone()
+            con.close()
+        except Exception:
+            row = None
+        if not row:
+            continue
+        marked_id = int(row[0])
+        access_hash = int(row[1] or 0)
+        real_id, peer_type = utils.resolve_id(marked_id)
+        if peer_type is types.PeerChannel:
+            return types.InputPeerChannel(real_id, access_hash)
+        if peer_type is types.PeerUser:
+            return types.InputPeerUser(real_id, access_hash)
+        if peer_type is types.PeerChat:
+            return types.InputPeerChat(real_id)
+    return None
 
 def looks_like_job(text):
     # Level 1 safety: scanner accepts only positively identified employer vacancies.
@@ -116,10 +157,12 @@ async def scan_source(source):
     username = normalize_username(source['username']) or normalize_username(source['telegram_url'])
     if not username:
         return 0
-    try:
-        entity = await client.get_entity(username)
-    except Exception as e:
-        print('SOURCE_FAIL', username, repr(e))
+    guard_key = username.lower()
+    entity = cached_input_peer(username)
+    if entity is None:
+        # Fail closed for API load too: discovery may populate a cache later.
+        _rg_fail(guard_key, 6 * 3600, 'uncached_entity_no_username_resolution')
+        print('SOURCE_UNCACHED', username)
         return 0
     cutoff = datetime.now(timezone.utc) - timedelta(days=7)
     found = 0
@@ -147,7 +190,13 @@ async def scan_source(source):
                 found += 1
             finally:
                 con.close()
+        _rg_ok(guard_key)
+    except FloodWaitError as e:
+        seconds = int(getattr(e, 'seconds', 3600) or 3600)
+        _rg_fail(guard_key, seconds + 300, f'floodwait:{seconds}')
+        print('SCAN_FLOODWAIT', username, seconds)
     except Exception as e:
+        _rg_fail(guard_key, 1800, repr(e))
         print('SCAN_FAIL', username, repr(e))
     con = db()
     try:
@@ -173,14 +222,24 @@ async def main():
         )
     )[:120]
     total = 0
+    cached = 0
+    uncached = 0
     print('=== TELEGRAM SCANNER START ===')
     print('sources:', len(sources))
     for source in sources:
-        _guard_key = (source.get('username') if hasattr(source, 'get') else None) or (source.get('source_key') if hasattr(source, 'get') else None) or (source.get('id') if hasattr(source, 'get') else None) or str(source)
-        if not _rg_allowed(_guard_key):
+        username = normalize_username(source['username']) or normalize_username(source['telegram_url'])
+        if not username:
             continue
+        if not _rg_allowed(username.lower()):
+            continue
+        if cached_input_peer(username) is None:
+            uncached += 1
+        else:
+            cached += 1
         n = await scan_source(source)
         total += n
+    print('cached_sources:', cached)
+    print('uncached_sources:', uncached)
     print('new_jobs:', total)
     print('=== TELEGRAM SCANNER DONE ===')
 if __name__ == '__main__':
