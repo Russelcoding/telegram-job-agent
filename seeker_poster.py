@@ -68,7 +68,6 @@ EUROPE_COUNTRIES = {
     'latvia','lithuania','luxembourg'
 }
 
-
 def priority(country):
     c = (country or '').strip().lower()
     if c in PRIORITY_COUNTRIES:
@@ -77,10 +76,8 @@ def priority(country):
         return 2
     return 1
 
-
 def cols(conn, table):
     return [r[1] for r in conn.execute(f'pragma table_info("{table}")')]
-
 
 def pick(candidates, available):
     low = {x.lower(): x for x in available}
@@ -88,7 +85,6 @@ def pick(candidates, available):
         if c in low:
             return low[c]
     return None
-
 
 def norm_handle(v):
     if v is None:
@@ -108,19 +104,16 @@ def norm_handle(v):
         return '@' + s
     return None
 
-
 def russianish(text):
     cyr = len(re.findall(r'[А-Яа-яЁё]', text or ''))
     lat = len(re.findall(r'[A-Za-z]', text or ''))
     return cyr > lat and cyr >= 10
-
 
 def allowed_by_rules(text):
     t = (text or '').lower()
     if any(re.search(p, t, re.S) for p in NEGATIVE):
         return False
     return any(re.search(p, t, re.S) for p in POSITIVE)
-
 
 def cached_usernames():
     if not SESSION_DB.exists():
@@ -133,7 +126,6 @@ def cached_usernames():
         }
     finally:
         con.close()
-
 
 async def main():
     conn = sqlite3.connect(DB, timeout=30)
@@ -176,16 +168,13 @@ async def main():
         if not handle:
             continue
         username = handle.lstrip('@').lower()
-        # Critical anti-FloodWait rule: poster only touches entities already cached locally.
         if username not in cached:
             continue
         key = handle.lower()
-        # Permanently skip groups that have already rejected posting.
         if conn.execute(
             "select 1 from seeker_group_posts where source_key=? and status='blocked' limit 1", (key,)
         ).fetchone():
             continue
-        # 14-day per-group cooldown after a successful post.
         if conn.execute(
             "select 1 from seeker_group_posts where source_key=? and status='sent' and posted_at>=? limit 1",
             (key, cutoff)
@@ -206,7 +195,6 @@ async def main():
                 break
             key = handle.lower()
             try:
-                # Because we pre-checked the Telethon session cache, this should not need ResolveUsernameRequest.
                 entity = await client.get_entity(handle)
                 if isinstance(entity, Channel) and not getattr(entity, 'megagroup', False):
                     continue
@@ -241,6 +229,7 @@ async def main():
                 conn.execute(
                     'insert into seeker_group_posts(source_key,group_title,posted_at,telegram_message_id,language,status,note) values(?,?,?,?,?,?,?)',
                     (key, title, ts, getattr(sent, 'id', None), lang, 'sent', f'rules positive; no CV attached; country={country}')
+                )
                 conn.commit()
                 posted += 1
                 print('SEEKER_POST_SENT', key, title, getattr(sent, 'id', None), lang)
@@ -264,7 +253,6 @@ async def main():
         conn.close()
 
     print('SEEKER_POSTER_DONE posted=', posted, 'cooldown_days=', COOLDOWN_DAYS, 'max_per_run=', MAX_POSTS_PER_RUN)
-
 
 if __name__ == '__main__':
     asyncio.run(main())
